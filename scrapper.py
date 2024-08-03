@@ -3,13 +3,12 @@ import nltk
 import requests
 from duckduckgo_search import DDGS
 
-# nltk.download('punkt')
+nltk.download('punkt')
 def scrape_article(url)  -> dict:
     try :
         url = DDGS().text(url, max_results=1)
         article = Article(url[0]['href'])
         article.download()
-        # print(article)
         article.parse()
         print(article.text)
         article.nlp()
