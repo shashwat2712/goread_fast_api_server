@@ -1,0 +1,47 @@
+# Virtual Environment
+venv/
+.venv/
+myenv/
+myvenv/
+
+# Environment Variables
+.env
+
+# Python Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and Editor Files
+
+.vscode/
+
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Log Files
+*.log
+
+# Test Artifacts
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Deployment and Build Files
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+tasks.py
