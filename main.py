@@ -4,6 +4,9 @@ from redis import asyncio as aioredis
 import json
 from scrap_route import scrap_router
 import os
+from threading import Thread
+
+from update_cache import fetch_and_cache_news
 REDIS_HOST = str(os.getenv('REDIS_HOST'))
 REDIS_PORT = int(os.getenv('REDIS_PORT', 13923))
 REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
@@ -60,6 +63,14 @@ async def get_latest_news(page_number: int):
     if isinstance(articles, dict) and "error" in articles:
         raise HTTPException(status_code=404, detail=articles["error"])
     return {"latest_news": articles}
+
+
+@app.get("/update-news")
+async def update_news():
+    # Run fetch_and_cache_news in a separate thread
+    thread = Thread(target=fetch_and_cache_news)
+    thread.start()
+    return {"status": "update started"}
 
 
 # FastAPI route to get articles by page

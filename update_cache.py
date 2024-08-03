@@ -96,5 +96,3 @@ def fetch_and_cache_news():
         except TypeError as e:
             print(f"Error serializing data for page {page_number}: {e}")
 
-if __name__ == "__main__":
-    fetch_and_cache_news()
